@@ -468,7 +468,11 @@ function getLocation() {
       myPos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
       btn.disabled = false;
       btn.textContent = '現在地を更新して再計算';
-      showMsg('ok', '✓ 現在地を取得しました');
+      var now = new Date();
+      var hh = now.getHours();
+      var mm = now.getMinutes();
+      var timeStr = hh + ':' + (mm < 10 ? '0' : '') + mm;
+      showMsg('ok', '✓ 現在地を取得しました　取得時刻 ' + timeStr);
       render();
     },
     function(err) {
